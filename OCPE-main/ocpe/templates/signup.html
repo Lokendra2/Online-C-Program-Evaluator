@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section p-2">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Sign Up</legend>
+            <div class="form-group py-2">
+                {{ form.username.label(class="form-control-label mb-1") }}
+                {% if form.username.errors %}
+                {{ form.username(class="form-control is-invalid", placeholder="foobar") }}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.username(class="form-control", placeholder="foobar") }}
+                {% endif %}
+            </div>
+            <div class="form-group py-2">
+                {{ form.email.label(class="form-control-label mb-1") }}
+                {% if form.email.errors %}
+                {{ form.email(class="form-control is-invalid", placeholder="foo@bar.com") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="form-control", placeholder="foo@bar.com") }}
+                {% endif %}
+            </div>
+            <div class="form-group py-2">
+                {{ form.password.label(class="form-control-label mb-1") }}
+                {% if form.password.errors %}
+                {{ form.password(class="form-control is-invalid", placeholder="******") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.password(class="form-control", placeholder="******") }}
+                {% endif %}
+            </div>
+            <div class="form-group py-2">
+                {{ form.confirm_password.label(class="form-control-label mb-1") }}
+                {% if form.confirm_password.errors %}
+                {{ form.confirm_password(class="form-control is-invalid", placeholder="******") }}
+                <div class="invalid-feedback">
+                    {% for error in form.confirm_password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.confirm_password(class="form-control", placeholder="******") }}
+                {% endif %}
+            </div>
+            <div class="form-group py-2 pr-3">
+                {{ form.type.label(class="form-control-label mb-1 pb-2")}}
+                {% if form.type.errors %}
+                {% for subfield in form.type %}
+                <div class="form-check form-check-inline">
+                    {{ subfield(class="form-check-input") }}
+                    {{ subfield.label(class="form-check-label") }}
+                </div>
+                {% endfor %}
+                <div class="invalid-feedback">
+                    {% for error in form.type.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+
+                {% for subfield in form.type %}
+                <div class="form-check form-check-inline">
+                    {{ subfield(class="form-check-input") }}
+                    {{ subfield.label(class="form-check-label") }}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+        </fieldset>
+        <div class="form-group py-2">
+            {{ form.submit(class="btn btn-outline-dark") }}
+        </div>
+    </form>
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+    </small>
+</div>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section p-2">
+    <legend class="border-bottom mb-4">Judge {{current_user.GetId()}} : {{current_user.username}} </legend>
+    <div class="list-group">
+        <a class="list-group-item list-group-item-action active">
+            Problem list
+        </a>
+        {% for problem in problemset %}
+            <a href="{{ url_for('modify_problem', problemId=problem.id) }}" class="list-group-item list-group-item-action">{{problem.name}} <span style="margin-left: auto;"> #{{problem.id}}</span></a>
+        {% endfor %}
+        <!-- <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a> -->
+    </div>
+
+</div>
+{% endblock content %}

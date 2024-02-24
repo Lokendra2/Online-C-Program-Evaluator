@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section p-2">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Submit Solution for problem #{{ problem.id }}: {{ problem.name }}</legend>
+            <div class="form-group">
+                    {{ form.code.label(class="form-control-label mb-1") }}
+                    {% if form.code.errors %}
+                    {{ form.code(class="form-control is-invalid", rows="15") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.code.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.code(class="form-control", rows="15") }}
+                    {% endif %}
+            </div>
+        </fieldset>
+        {{ form.submit(class="btn btn-secondary my-3") }}
+        <!-- <button type="submit" class="btn btn-primary">Create Problem</button> -->
+    </form>
+</div>
+{% endblock content %}

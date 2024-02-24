@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section p-2">
+    <legend class="border-bottom mb-4 fs-3">Evaluation result for submission #{{ submission.id }}: {{ problem.name }}</legend>
+    <div class="row fs-4 mb-2">
+        <div class="col-sm-2">Status</div>
+        <div class="col-sm-10 fw-lighter">
+            {{ submission.status }}
+        </div>
+    </div>
+    <div class="row fs-4 mb-2">
+        <div class="col-sm-2">Score</div>
+        <div class="col-sm-10 fw-lighter">
+            {{ submission.score }} points
+        </div>
+    </div>
+    <div class="row fs-4 mb-2">
+        <div class="col-sm-2">Time</div>
+        <div class="col-sm-10 fw-lighter">
+            {{ submission.time }} seconds
+        </div>
+    </div>
+    <div class="row fs-4 mb-2">
+        <div class="col-sm-2">Memory</div>
+        <div class="col-sm-10 fw-lighter">
+            {{ submission.memory }} kb
+        </div>
+    </div>
+    <!-- <button type="submit" class="btn btn-primary">Create Problem</button> -->
+</div>
+{% endblock content %}

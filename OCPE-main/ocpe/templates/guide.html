@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section p-2">
+    <legend class="border-bottom mb-4">Guide</legend>
+    <div class="row">
+        <div class="col-3 social-wrapper">
+            <ul class="p-0">
+                <li class="facebook">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                    <div class="slider">
+                        <p>facebook</p>
+                    </div>
+                </li>
+                <li class="twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                    <div class="slider">
+                        <p>twitter</p>
+                    </div>
+                </li>
+
+                <li class="instagram">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                    <div class="slider">
+                        <p>instagram</p>
+                    </div>
+                </li>
+                <li class="google">
+                    <i class="fa fa-google" aria-hidden="true"></i>
+                    <div class="slider">
+                        <p>google</p>
+                    </div>
+                </li>
+                <li class="whatsapp">
+                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                    <div class="slider">
+                        <p>whatsapp</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-9 text-start my-2">
+          	Hi everyone, welcome to our portal OCPE. This is a guide for users on the features of OCPE <br><br>
+              <ul>
+                  <li>
+                      <h4>Login/Signup features </h4>
+                      <ul>
+                          <li><h6>Signup:</h6> Cannot signup with existing username or password.<br></li>
+                          <li><h6>Login:</h6> Need to enter either email or username to login.Also doesn't allow a user of a type to access functionalites unique for user of the other type.Remember me feature to remember you if you do not logout before leaving the software.<br></li>
+                      </ul>
+                  </li>
+                  <br>
+                  <li>
+                      <h4>Judge features </h4>
+                      <ul>
+                          <li><h6>Create Problem:</h6> This section allows user of judge type to create a problem with all details such as name, title, description, sample input, sample output, time limit.<br></li>
+                          <li><h6>Modify Problem:</h6> This section allows user of judge type to modify the problem he/she created.The details that can be modified are name, title, description, sample input, sample output, time limit.<br></li>
+                      </ul>
+                  </li>
+                  <br>
+                  <li>
+                      <h4>Contestant features</h4>
+                      <ul>
+                          <li><h6>Practice:</h6> This section allows user of contestant type to practice the problems that have been set by the judges by submitting c codes for them.The software evaluates that and checks the output against the sample output and displays a verdict of the submission.<br></li>
+                      </ul>
+                  </li>
+              </ul>
+        </div>
+    </div>
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Wish to get in touch? <a class="ml-2" href="mailto:admin@ocpe.com">Contact us</a> now
+    </small>
+</div>
+{% endblock content %}

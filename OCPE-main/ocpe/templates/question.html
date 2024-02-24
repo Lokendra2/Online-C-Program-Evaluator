@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Post content-->
+<article class="border-bottom mb-2">
+  <!-- Post header-->
+  <div class="mb-4">
+    <!-- Post title-->
+    <h1 class="fw-bolder mb-1">{{ problem.title }}</h1> <!-- Post meta content-->
+    <div class="text-muted fst-italic mb-2">{{ problem.name }}</div> <!-- Post categories-->
+    <div class="badge bg-secondary">#{{ problem.id }}</div>
+    <!-- <div class="badge bg-secondary">Queue</div> -->
+  </div> <!-- Preview image figure-->
+
+  <section class="mb-5">
+    {% set paras = problem.description.splitlines() %}
+    {% for para in paras %}
+    <p class="fs-6 mb-4">{{ para }}</p>
+    {% endfor %}
+    {% if problem.testInput %}
+    <h2 class="fw-bolder mb-4 mt-5">Sample Inputs: </h2>
+    <p class="fs-6 mb-4">{{ problem.testInput }}</p>
+    {% endif %}
+    <!-- <p class="fs-6 mb-4">Input #</p> -->
+    {% if problem.testOutput %}
+    <h2 class="fw-bolder mb-4 mt-5">Sample Outputs: </h2>
+    <p class="fs-6 mb-4">{{ problem.testOutput }}</p>
+    {% endif %}
+    <!-- <p class="fs-6 mb-4">Output #</p> -->
+    <a class="btn btn-secondary py-1" href="{{ url_for('solve', problemId=problem.id) }}">Attempt</a>
+  </section>
+</article><!-- Comments section-->
+
+{% endblock content %}

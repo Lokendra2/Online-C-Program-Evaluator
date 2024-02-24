@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <div class="row py-3">
+    <form class="row" method="POST">
+      {{ form.hidden_tag() }}
+      <div class="col-md-8">
+        {% if form.code.errors %}
+        {{ form.code(class="h-100", id="editor") }}
+        <div class="invalid-feedback">
+            {% for error in form.code.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.code(class="h-100", id="editor") }}
+        {% endif %}
+        <!-- <textarea name='raw_code' id='editor' class="h-100"></textarea> -->
+      </div>
+      <div class="col-md-4 form-row">
+        <div class="mb-2">
+          {{ form.input.label(class="form-control-label mb-1") }}
+          {% if form.input.errors %}
+          {{ form.input(class="form-control is-invalid", rows="6", placeholder="// Enter Input here") }}
+          <div class="invalid-feedback">
+              {% for error in form.input.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+          </div>
+          {% else %}
+          {{ form.input(class="form-control", rows="6", placeholder="// Enter Input here") }}
+          {% endif %}
+        </div>
+        <div class="mb-3">
+          {{ form.output.label(class="form-control-label mb-1") }}
+          {{ form.output(class="form-control", rows="6", placeholder="// Output will be displayed here", disabled=true) }}
+        </div>
+        
+        <button class="btn btn-outline-secondary w-25" type="reset">Clear</button>
+        {{ form.submit(class="btn btn-outline-dark w-25") }}
+      </div>
+    </form>
+  </div>
+
+  <!-- <div class="sec-widget mb-4"  style="padding: 0.3rem !important;" data-widget="ed62dfd9c38a402f2c2e939e44f86197"></div> -->
+
+{% endblock content %}

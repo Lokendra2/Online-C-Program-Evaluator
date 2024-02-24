@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section p-2">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Create Problem</legend>
+            <div class="form-row row my-3">
+                <div class="form-group col-md-4">
+                    {{ form.name.label(class="form-control-label mb-1") }}
+                    {% if form.name.errors %}
+                    {{ form.name(class="form-control is-invalid", placeholder="Problem name") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.name(class="form-control", placeholder="Problem Name") }}
+                    {% endif %}
+                </div>
+                <div class="form-group col-md-8">
+                    {{ form.title.label(class="form-control-label mb-1") }}
+                    {% if form.title.errors %}
+                    {{ form.title(class="form-control is-invalid", placeholder="Problem title") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.title.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.title(class="form-control", placeholder="Problem Title") }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.description.label(class="form-control-label mb-1") }}
+                {% if form.description.errors %}
+                {{ form.description(class="form-control is-invalid", rows="10") }}
+                <div class="invalid-feedback">
+                    {% for error in form.description.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.description(class="form-control", rows="10") }}
+                {% endif %}
+                <!-- <label class="mb-1" for="description">Problem Statement</label>
+                <textarea class="form-control" id="description" rows="10"></textarea> -->
+            </div>
+            <div class="form-row row my-3">
+                <div class="form-group col-md-6">
+                    {{ form.testInput.label(class="form-control-label mb-1") }}
+                    {% if form.testInput.errors %}
+                    {{ form.testInput(class="form-control is-invalid", rows="3") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.testInput.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.testInput(class="form-control", rows="3") }}
+                    {% endif %}
+                    <!-- <label class="mb-1" for="testInput">Test Case</label>
+                    <textarea class="form-control" id="testInput" rows="3"></textarea> -->
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.testOutput.label(class="form-control-label mb-1") }}
+                    {% if form.testOutput.errors %}
+                    {{ form.testOutput(class="form-control is-invalid", rows="3") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.testOutput.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.testOutput(class="form-control", rows="3") }}
+                    {% endif %}
+                    <!-- <label class="mb-1" for="testOutput">Expected Output</label>
+                    <textarea class="form-control" id="testOutput" rows="3"></textarea> -->
+                </div>
+            </div>
+            <div class="form-row row my-3">
+                <div class="form-group col-md-6 mb-3">
+                    {{ form.score.label(class="form-control-label mb-1") }}
+                    {% if form.score.errors %}
+                    {{ form.score(class="form-control is-invalid", placeholder="Max. Score: default 100", disabled="true") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.score.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.score(class="form-control", placeholder="Max. Score: default 100", disabled="true") }}
+                    {% endif %}
+                    <!-- <label class="mb-1" for="score">Score</label>
+                <input type="text" class="form-control" id="score" placeholder="Max. Score"> -->
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    {{ form.timeLimit.label(class="form-control-label mb-1") }}
+                    {% if form.timeLimit.errors %}
+                    {{ form.timeLimit(class="form-control is-invalid", placeholder="Time limit: default 10s") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.timeLimit.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.timeLimit(class="form-control", placeholder="Time limit: default 10s") }}
+                    {% endif %}
+                </div>
+            </div>
+
+
+        </fieldset>
+        {{ form.submit(class="btn btn-secondary") }}
+        <!-- <button type="submit" class="btn btn-primary">Create Problem</button> -->
+    </form>
+</div>
+{% endblock content %}

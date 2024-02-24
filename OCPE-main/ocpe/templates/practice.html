@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+  {% for problem in problems %}
+  <div class="card mb-4">
+    <div class="card-header d-flex justify-content-between">
+      <div class="h5 mb-0">{{ problem.name }}</div>
+      <div class="text-muted fst-italic text-right">#{{ problem.id }}</div>
+    </div>
+    <div class="card-body">
+      <div class="card-title h4 mb-2">{{ problem.title }}</div>
+      <!-- <div class="text-muted fst-italic mb-2">#{{ problem.id }}</div> Post categories -->
+      <div class="card-text">
+        <!-- <figure class="mb-4 text-center"><img class="img-fluid rounded"
+            src="https://dummyimage.com/600x200/ced4da/6c757d.jpg" alt="..." /></figure> Post content/ -->
+        <p class="fs-6 line-clamp">{{ problem.description }}</p>
+      </div>
+      <a class="btn btn-secondary py-1" href="{{ url_for('problem', problemId=problem.id) }}">View problem</a>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock content %}

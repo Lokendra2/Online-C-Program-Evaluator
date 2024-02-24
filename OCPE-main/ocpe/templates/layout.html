@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="{{ url_for('static', filename='logos/logo_white.png') }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="authors" content="Roopak Priydarshi, Shah Dhruv Rajendrabhai, Swarup Padhi">
+  <meta name="description" content="Online C Program evaluation website" />
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <!-- font-awesome link -->
+  <script src="https://kit.fontawesome.com/566f8e2e1a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- codemirror link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css" integrity="sha512-uf06llspW44/LZpHzHT6qBOIVODjWtv4MxCricRxkzvopAlSWnTf6hpZTFxuuZcuNE9CBQhqE0Seu1CoRk84nQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/monokai.min.css" integrity="sha512-R6PH4vSzF2Yxjdvb2p2FA06yWul+U0PDDav4b/od/oXf9Iw37zl10plvwOXelrjV2Ai7Eo3vyHeyFUjhXdBCVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/scroll/simplescrollbars.min.css" integrity="sha512-2y3NTsei81d5emn5nwrdflyI5EGULwKXRZ0BCbO55cjgQ8x62X4ydH/jbnzrKnxArstf79F9n6z1j2MtVmJ8YA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js" integrity="sha512-8RnEqURPUc5aqFEN04aQEiPlSAdE0jlFS/9iGgUyNtwFnSKCXhmB6ZTNl7LnDtDWKabJIASzXrzD0K+LYexU9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/clike/clike.min.js" integrity="sha512-l8ZIWnQ3XHPRG3MQ8+hT1OffRSTrFwrph1j1oc1Fzc9UKVGef5XN9fdO0vm3nW0PRgQ9LJgck6ciG59m69rvfg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/edit/closebrackets.min.js" integrity="sha512-tsjcYO5hFvViRssxiM7Jhd8601epWOx1He3Hl4yuI5dKKPxr43KxkOhc9GZeeqzlYJm9ABb7UPA9697NiqZZ7Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/edit/matchbrackets.min.js" integrity="sha512-GSYCbN/le5gNmfAWVEjg1tKnOH7ilK6xCLgA7c48IReoIR2g2vldxTM6kZlN6o3VtWIe6fHu/qhwxIt11J8EBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/scroll/simplescrollbars.min.js" integrity="sha512-1Vc3i/yplqkVbJBGgEpx9odVj3SLHMx2EOsQOMJsHbM5LRPL2iaPH2sEE+8sZOCqvuXGignKEwmTqO6/b11RqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- stylesheet -->
+  <link type="text/css" rel="stylesheet" href="{{ url_for( 'static', filename='stylesheet.css')}}">
+
+  {% if title %}
+  <title>{{ title }} | OCPE</title>
+  {% else %}
+  <title>OCPE</title>
+  {% endif %}
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand navbar-logo" href="{{ url_for('guide') }}">
+        <img src="{{ url_for('static', filename='logos/logo_white.png') }}" alt="OCPE" height="30" class="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('create_problem') }}">Create Problem</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('problems') }}">Modify Problem</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('contests') }}">Contests</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('practice') }}">Practice</a>
+          </li>
+        </ul>
+        <!-- <a class="navbar-text nav-link py-0" href="{{ url_for('signup') }}">Signup</a>
+          <a class="navbar-text nav-link py-0" href="{{ url_for('login') }}">Login</a>
+          <a class="navbar-text nav-link py-0" href="#">Profile</a> -->
+
+        <div class="navbar-nav">
+          {% if current_user.is_authenticated %}
+          <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+          <!-- <a class="navbar-text nav-link py-0" href="#">Profile</a> -->
+          {% else %}
+          <!-- <a class="navbar-text nav-link py-0" href="{{ url_for('login') }}">Login</a>
+              <a class="navbar-text nav-link py-0" href="{{ url_for('signup') }}">Signup</a> -->
+          <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+          <a class="nav-item nav-link" href="{{ url_for('signup') }}">Signup</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <main role="main" class="container">
+    <!-- 
+    {% if wrongDirect %}
+    <div class="forbidden p-5">
+      <h1>404</h1>
+      <div>
+        <h2>
+          Sorry! Page not found
+        </h2>
+        <p>The page you are looking for might have been removed, had its name changed, or is temporarily
+          unavailable.</p>
+        <a class="text-muted" href="javascript:history.back()">Please go back to the previous page</a>
+      </div>
+    </div>
+    {% else %}
+
+ -->
+
+
+    <div class="row py-5 px-2">
+      <div class="col-lg-11 mx-auto" style="min-height: 65vh;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {% block content %}
+        {% endblock %}
+      </div>
+
+      <!-- !!make this sticky -->
+      <!-- Side widgets-->
+      <!-- <div class="col-lg-4">
+        <!-- Search widget -->
+      <!-- <div class="card mb-4">
+          <div class="card-header">Search</div>
+          <div class="card-body">
+            <div class="input-group">
+              <input class="form-control" type="text" placeholder="Enter search term..."
+                aria-label="Enter search term..." aria-describedby="button-search" />
+              <button class="btn btn-dark" id="button-search" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div> -->
+      <!-- Categories widget-->
+      <!-- <div class="card mb-4">
+          <div class="card-header">Categories</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-11">
+                <div class="badge bg-dark gx-1">Web Design</div>
+                <div class="badge bg-dark gx-1">HTML</div>
+                <div class="badge bg-dark gx-1">Freebies</div>
+                <div class="badge bg-dark gx-1">JavaScript</div>
+                <div class="badge bg-dark gx-1">CSS</div>
+                <div class="badge bg-dark gx-1">Tutorials</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">Contest #</div>
+          <div class="card-body">Looooong contest desc. shortened ...</div>
+        </div> -->
+      <!-- Side widget-->
+      <!-- <div class="card mb-4">
+          <div class="card-header">LeaderBoard</div>
+          <div class='card-body p-0'>
+            <table class='table table-striped table-hover table-sm light mb-0'>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th class='w-100'>User</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jacob</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> -->
+      <!-- {% endif %} -->
+    </div>
+  </main>
+
+
+  <div class="footer d-flex flex-column h-100">
+    <section class="hero text-white py-3 flex-grow-1">
+      <div class="container py-2">
+        <div class="row">
+          <div class="col-lg-9">
+            <h1 class="display-4">Online C Program Evaluator</h1>
+            <p class="fst-italic text-muted">An online judge for evaluating C programs against expected
+              output</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="w-100 py-4 flex-shrink-0">
+      <div class="container py-2">
+        <div class="row gy-4 gx-5 justify-content-between">
+          <div class="col-lg-3 col-md-6">
+            <img class="img-fluid" src="{{url_for('static', filename='logos/sq_logo_white.png')}}" alt="OCPE logo">
+          </div>
+          <div class="col-lg-3 col-md-4 offset-md-2 offset-lg-1">
+            <h5 class="h2 text-white mb-3">Quick links</h5>
+            <ul class="list-unstyled text-muted">
+              <li><a href="{{ url_for('home') }}">Home</a></li>
+              <!-- <li><a href="{{ url_for('contests') }}">Contests</a></li> -->
+              <li><a href="{{ url_for('practice') }}">Practice</a></li>
+              <li><a href="{{ url_for('create_problem') }}">Create Problem</a></li>
+              <li><a href="{{ url_for('problems') }}">Modify Problem</a></li>
+              <li><a href="{{ url_for('guide') }}">Guide</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <h5 class="h2 text-white">Team</h5>
+            <p class="small text-muted mb-2">Roopak Priydarshi, Shah Dhruv Rajendrabhai, Swarup Padhi</p>
+            <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved.
+              <a class="text-primary" href="{{ url_for('guide') }}">OCPE</a>
+            </p>
+          </div>
+          <!-- <div class="col-lg-2 col-md-6">
+            <h5 class="text-white mb-3">Personal</h5>
+            <ul class="list-unstyled text-muted">
+              <li><a href="#">Dashboard</a></li>
+              <li><a href="#">Leaderboard</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-white mb-3">Newsletter</h5>
+            <p class="small text-muted">Subscribe to our newsletter to get notified about contests.</p>
+            <form action="#">
+              <div class="input-group mb-3">
+                <input class="form-control" type="text" placeholder="Recipient's username"
+                  aria-label="Recipient's username" aria-describedby="button-addon2" />
+                <button class="btn btn-secondary" id="button-addon2" type="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div> -->
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  
+  <script type="text/javascript">
+    var editor = CodeMirror.fromTextArea(
+        document.getElementById('editor'), {
+            value: '#include<stdio.h>\n\nint main() {\n\n// write code here\n\nreturn 0;\n}\n',
+            mode:'text/x-csrc',
+            theme:'monokai',
+            lineNumbers: true,
+            autoCloseBrackets: true,
+            matchBrackets: true,
+            scrollbarStyle: 'overlay',
+        });
+    editor.setSize(null, 500);
+  </script>
+</body>
+
+<!-- Sphere-engine widget integration -->
+<script>
+  SEC_HTTPS = true;
+  SEC_BASE = "compilers.widgets.sphere-engine.com";
+  (function (d, s, id) {
+    SEC = window.SEC || (window.SEC = []);
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+    js.src = (SEC_HTTPS ? "https" : "http") + "://" + SEC_BASE + "/static/sdk/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, "script", "sphere-engine-compilers-jssdk"));
+
+  // var removeLabel = function() {
+  //   var label = document.getElementById("footer");
+  //   console.log("hi!")
+  //   if(typeof(label) != 'undefined' && label != null) {
+  //     label.style.display = none;
+  //   }
+  // }
+
+</script>
+
+</html>
